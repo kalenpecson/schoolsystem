@@ -14,3 +14,6 @@ teachers.push(new Teacher("Peter","Mah","AP Stats"));
 sections.push(new Section("Computer Science",32));
 sections.push(new Section("Advanced Math 2",30));
 sections.push(new Section("AP Stats",24));
+
+var allLists=[students,teachers,sections];
+var allConstructors=[Student,Teacher,Section];
