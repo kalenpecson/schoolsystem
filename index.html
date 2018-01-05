@@ -10,13 +10,17 @@
 </head>
 <body>
 <div id="header">School System Program</div>
-<select id="lists">
-    <option value="1">Students</option>
-    <option value="2">Teachers</option>
-    <option value="3">Sections</option>
+<div id="inputs">
+    <select id="lists">
+        <option value="1">Students</option>
+        <option value="2">Teachers</option>
+        <option value="3">Sections</option>
     </select>
-<button id="listem" onclick= "listem()">List</button>
-<button id="adder" onclick="setupadd()">Add</button>
+    <button id="listem" onclick= "listem()">List</button>
+    <button id="adder" onclick="setupadd()">Add</button>
+</div>
+<button id="addstudent" onclick="addstudenttosection()">Add a student to a section</button>
+
 <div id="listoutput"></div>
 
 </body>

@@ -14,5 +14,8 @@ function Teacher (firstname,lastname,subject){
 function Section (name,count){
     this.count=count;
     this.name=name;
+    this.etudiants=[];
+    this.size= this.etudiants.length
+
 }
 
