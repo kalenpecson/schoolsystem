@@ -24,13 +24,12 @@ function ridofborder(){
 }
 
 function setupadd(){
+    item="";
     setborder();
     document.getElementById("listoutput").innerHTML="";
     var chosentype=document.getElementById("lists").value;
     item= allLists[chosentype-1];
-    console.log(item);
     for(key in item[1]){
-        console.log(key);
         document.getElementById("listoutput").innerHTML+= "<input type='text' id="+key+" placeholder="+key+ " size='50' margin-top='10'>"+"<br>";
     }
     document.getElementById("listoutput").innerHTML+= "<button  id='addbutton' onclick='addone()'>Enter</button>";
@@ -54,6 +53,8 @@ function addone(){
 var name="";
 var sectionname="";
 function addstudenttosection(){
+    name="";
+    sectionname="";
     document.getElementById("listoutput").innerHTML="";
     document.getElementById("listoutput").innerHTML="<select id='listofstudents'></select>";
     for (var i=0; i<students.length; i++){
@@ -75,5 +76,36 @@ function addtosection(){
         sectionname= sections[i].name;
         document.getElementById("listofsections").innerHTML+="<option value=i >" + sectionname + "</option>"
     }
-    document.getElementById("listofsections").innerHTML+="<option>"
+    document.getElementById("listoutput").innerHTML+="<button id='enterstudent' onclick='enterstudent()'>Enter</button>"
+}
+
+function enterstudent(){
+    var number= document.getElementById("listofsections").selectedIndex;
+    console.log(number);
+    var selectedclass = sections[number];
+    selectedclass.addstudent(name);
+    console.log(selectedclass.etudiants);
+    document.getElementById("listoutput").innerHTML="";
+    document.getElementById("listoutput").innerHTML="<img src='img/check-mark-1292787_960_720.png' width='250' >";
+}
+
+function seestudentssection(){
+    sectionname="";
+    document.getElementById("listoutput").innerHTML="";
+    document.getElementById("listoutput").innerHTML="Select a Class";
+    document.getElementById("listoutput").innerHTML+= "<br>"+ "<select id='listofsections'></select>";
+    for (var i=0;i<sections.length;i++){
+        sectionname= sections[i].name;
+        document.getElementById("listofsections").innerHTML+="<option value=i >" + sectionname + "</option>"
+    }
+    document.getElementById("listoutput").innerHTML+="<button id='liststudents' onclick='liststudents()'>Enter</button>"
+}
+
+function liststudents(){
+    var number=document.getElementById("listofsections").selectedIndex;
+    var selectedclass=sections[number];
+    document.getElementById("listoutput").innerHTML="";
+    for(var i=0; i< selectedclass.size;i++){
+        document.getElementById("listoutput").innerHTML+= selectedclass.etudiants[i]+"<br>";
+    }
 }
