@@ -9,7 +9,7 @@ function listem(){
                 result+= item[i][key]+" ";
             }
         result+= "<br>";
-        document.getElementById("listoutput").innerHTML+=result;
+        document.getElementById("listoutput").innerHTML+= (i+1) +". " +result;
         result="";
     }
 }
@@ -53,6 +53,7 @@ function addone(){
 var name="";
 var sectionname="";
 function addstudenttosection(){
+    setborder();
     name="";
     sectionname="";
     document.getElementById("listoutput").innerHTML="";
@@ -62,7 +63,8 @@ function addstudenttosection(){
         document.getElementById("listofstudents").innerHTML+="<option value=i >" + name + "</option>"
 
     }
-    document.getElementById("listoutput").innerHTML+= "<button  id='addstudentbutton' onclick='addtosection()'>Enter</button>";
+    document.getElementById("listoutput").innerHTML+= "<i class='fa fa-plus-square fa-lg' id='addstudentbutton' onclick='addtosection()'></i>";
+
 
 }
 
@@ -76,20 +78,19 @@ function addtosection(){
         sectionname= sections[i].name;
         document.getElementById("listofsections").innerHTML+="<option value=i >" + sectionname + "</option>"
     }
-    document.getElementById("listoutput").innerHTML+="<button id='enterstudent' onclick='enterstudent()'>Enter</button>"
+    document.getElementById("listoutput").innerHTML+="<i class='fa fa-plus-square fa-lg' id='enterstudent' onclick='enterstudent()'></i>";
 }
 
 function enterstudent(){
     var number= document.getElementById("listofsections").selectedIndex;
-    console.log(number);
     var selectedclass = sections[number];
     selectedclass.addstudent(name);
-    console.log(selectedclass.etudiants);
     document.getElementById("listoutput").innerHTML="";
     document.getElementById("listoutput").innerHTML="<img src='img/check-mark-1292787_960_720.png' width='250' >";
 }
 
 function seestudentssection(){
+    setborder();
     sectionname="";
     document.getElementById("listoutput").innerHTML="";
     document.getElementById("listoutput").innerHTML="Select a Class";
@@ -98,14 +99,19 @@ function seestudentssection(){
         sectionname= sections[i].name;
         document.getElementById("listofsections").innerHTML+="<option value=i >" + sectionname + "</option>"
     }
-    document.getElementById("listoutput").innerHTML+="<button id='liststudents' onclick='liststudents()'>Enter</button>"
+    document.getElementById("listoutput").innerHTML+="<i class='fa fa-address-book fa-lg' id='liststudents' onclick='liststudents()'></i>";
 }
 
 function liststudents(){
     var number=document.getElementById("listofsections").selectedIndex;
-    var selectedclass=sections[number];
+    var selectedclass= sections[number];
     document.getElementById("listoutput").innerHTML="";
+    console.log(selectedclass.size);
     for(var i=0; i< selectedclass.size;i++){
-        document.getElementById("listoutput").innerHTML+= selectedclass.etudiants[i]+"<br>";
+        document.getElementById("listoutput").innerHTML+= (i+1)+". "+selectedclass.etudiants[i]+"<br>";
+    }
+    if(selectedclass.size ==0){
+        document.getElementById("listoutput").innerHTML+= "N/A";
+
     }
 }

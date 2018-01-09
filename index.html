@@ -7,6 +7,7 @@
     <script src="Data.js"></script>
     <script src="actions.js"></script>
     <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div id="header">School System Program</div>
@@ -16,13 +17,17 @@
         <option value="2">Teachers</option>
         <option value="3">Sections</option>
     </select>
-    <button id="listem" onclick= "listem()">List</button>
-    <button id="adder" onclick="setupadd()">Add</button>
+    <i class="fa fa-address-book fa-2x" id="listem" onclick= "listem()"></i>
+    <i class="fa fa-plus-square fa-2x" id="adder" onclick="setupadd()"></i>
 </div>
+
 <button id="addstudent" onclick="addstudenttosection()">Add a student to a section</button>
 <button id="seestudents" onclick="seestudentssection()">List students in a section</button>
 
 <div id="listoutput"></div>
+<!--<i id="addSome" class="fa fa-plus" onclick="setUpField('selectsPeople');-->
+    <!--makeInvisible('studentTeacherSpecific', false);-->
+<!--"></i>-->
 
 </body>
 </html>
