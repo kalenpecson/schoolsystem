@@ -15,10 +15,11 @@ function Section (name,count){
     this.count = count;
     this.name=name;
     this.etudiants=[];
+    this.studentnames=[];
     this.size= this.etudiants.length;
     this.seatsleft= this.count-this.size;
     this.addstudent= function(name){
-        this.etudiants.push(name);
+        this.studentnames.push(name);
         this.size+=1;
         this.seatsleft-=1;
     }

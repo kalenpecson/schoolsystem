@@ -4,14 +4,22 @@ function listem(){
     var chosentype= document.getElementById("lists").value;
     var item= allLists[chosentype-1];
     var result="";
+    var numberofreps=0;
     for (var i=0;i< item.length;i++){
             for (key in item[i]){
                 result+= item[i][key]+" ";
+                if(chosentype==3){
+                    numberofreps+=1;
+                }
+                if (numberofreps==2){
+                    break;
+                }
             }
         result+= "<br>";
+        }
+
         document.getElementById("listoutput").innerHTML+= (i+1) +". " +result;
         result="";
-    }
 }
 
 var item="";
@@ -29,8 +37,18 @@ function setupadd(){
     document.getElementById("listoutput").innerHTML="";
     var chosentype=document.getElementById("lists").value;
     item= allLists[chosentype-1];
+    var numberofreps=0;
     for(key in item[1]){
-        document.getElementById("listoutput").innerHTML+= "<input type='text' id="+key+" placeholder="+key+ " size='50' margin-top='10'>"+"<br>";
+        if (chosentype==2||chosentype==1){
+            document.getElementById("listoutput").innerHTML+= "<input type='text' id="+key+" placeholder="+key+ " size='50' margin-top='10'>"+"<br>";
+        }else if(chosentype==3){
+            if(numberofreps==2){
+                break;
+            }else{
+                document.getElementById("listoutput").innerHTML+= "<input type='text' id="+key+" placeholder="+key+ " size='50' margin-top='10'>"+"<br>";
+                numberofreps+=1;
+            }
+        }
     }
     document.getElementById("listoutput").innerHTML+= "<button  id='addbutton' onclick='addone()'>Enter</button>";
 }
@@ -52,12 +70,14 @@ function addone(){
 }
 var name="";
 var sectionname="";
+var chosenstudent="";
 function addstudenttosection(){
     setborder();
     name="";
     sectionname="";
     document.getElementById("listoutput").innerHTML="";
     document.getElementById("listoutput").innerHTML="<select id='listofstudents'></select>";
+    chosenstudent="";
     for (var i=0; i<students.length; i++){
             name= students[i].firstname+ " "+students[i].lastname;
         document.getElementById("listofstudents").innerHTML+="<option value=i >" + name + "</option>"
@@ -71,6 +91,7 @@ function addstudenttosection(){
 function addtosection(){
     var chosenpersonnumber = document.getElementById("listofstudents").selectedIndex;
     name= students[chosenpersonnumber].firstname+ " "+students[chosenpersonnumber].lastname;
+    chosenstudent=students[chosenpersonnumber];
     document.getElementById("listoutput").innerHTML="";
     document.getElementById("listoutput").innerHTML= "Where would you like to add "+ name;
     document.getElementById("listoutput").innerHTML+= "<br>"+ "<select id='listofsections'></select>";
@@ -84,6 +105,7 @@ function addtosection(){
 function enterstudent(){
     var number= document.getElementById("listofsections").selectedIndex;
     var selectedclass = sections[number];
+    selectedclass.etudiants.push(chosenstudent );
     selectedclass.addstudent(name);
     document.getElementById("listoutput").innerHTML="";
     document.getElementById("listoutput").innerHTML="<img src='img/check-mark-1292787_960_720.png' width='250' >";
@@ -113,5 +135,18 @@ function liststudents(){
     if(selectedclass.size ==0){
         document.getElementById("listoutput").innerHTML+= "N/A";
 
+    }
+}
+
+function findperson(){
+    var foundstudents=[];
+    var searchedname=document.getElementById("lastnamesearch").value;
+    for (var i=0; i<sections.length;i++){
+        for (var j=0;j<sections[i].etudiants.length;j++ );
+        console.log(sections[i].etudiants[j]);
+        if (sections[i].etudiants[j].lastname== searchedname){
+            foundstudents.push(sections[i].etudiants[j]);
+            console.log(sections[i].etudiants[j]);
+        }
     }
 }
