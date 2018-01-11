@@ -16,10 +16,10 @@ function listem(){
                 }
             }
         result+= "<br>";
-        }
-
         document.getElementById("listoutput").innerHTML+= (i+1) +". " +result;
         result="";
+        numberofreps=0;
+    }
 }
 
 var item="";
