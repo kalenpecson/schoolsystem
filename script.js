@@ -17,7 +17,7 @@ function Section (name,count){
     this.etudiants=[];
     this.studentnames=[];
     this.size= this.etudiants.length;
-    this.seatsleft= this.count-this.size;
+    this.seatsleft= this.count;
     this.addstudent= function(name){
         this.studentnames.push(name);
         this.size+=1;

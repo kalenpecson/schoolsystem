@@ -105,7 +105,7 @@ function addtosection(){
 function enterstudent(){
     var number= document.getElementById("listofsections").selectedIndex;
     var selectedclass = sections[number];
-    selectedclass.etudiants.push(chosenstudent );
+    selectedclass.etudiants.push(chosenstudent);
     selectedclass.addstudent(name);
     document.getElementById("listoutput").innerHTML="";
     document.getElementById("listoutput").innerHTML="<img src='img/check-mark-1292787_960_720.png' width='250' >";
@@ -130,7 +130,7 @@ function liststudents(){
     document.getElementById("listoutput").innerHTML="";
     console.log(selectedclass.size);
     for(var i=0; i< selectedclass.size;i++){
-        document.getElementById("listoutput").innerHTML+= (i+1)+". "+selectedclass.etudiants[i]+"<br>";
+        document.getElementById("listoutput").innerHTML+= (i+1)+". "+selectedclass.etudiants[i].firstname +" "+selectedclass.etudiants[i].lastname+"<br>";
     }
     if(selectedclass.size ==0){
         document.getElementById("listoutput").innerHTML+= "N/A";
@@ -138,15 +138,47 @@ function liststudents(){
     }
 }
 
+
+var foundnamesarray=[];
+var respectivesections=[];
 function findperson(){
-    var foundstudents=[];
+    foundnamesarray=[];
     var searchedname=document.getElementById("lastnamesearch").value;
-    for (var i=0; i<sections.length;i++){
-        for (var j=0;j<sections[i].etudiants.length;j++ );
-        console.log(sections[i].etudiants[j]);
-        if (sections[i].etudiants[j].lastname== searchedname){
-            foundstudents.push(sections[i].etudiants[j]);
-            console.log(sections[i].etudiants[j]);
+    document.getElementById("listoutput").innerHTML="Students Found"+ "<br>";
+    document.getElementById("listoutput").innerHTML+= "<select id='listoffoundstudents'></select>";
+    for (var i=0;i<students.length;i++){
+        if(students[i].lastname==searchedname){
+            var foundname= students[i].firstname+" "+students[i].lastname;
+            document.getElementById("listoffoundstudents").innerHTML+= "<option>"+foundname+"</option>";
+            foundnamesarray.push(students[i]);
+            console.log(students[i])
+        }
+    }
+    document.getElementById("listoutput").innerHTML+="<button id='listsection' onclick='givesection()'>Enter</button>"
+
+}
+
+function givesection(){
+    respectivesections=[];
+    var chosenindex=document.getElementById("listoffoundstudents").selectedIndex;
+    for (var i=0; i<sections.length;i++) {
+        for (var j = 0; j < sections[i].etudiants.length; j++) {
+            if (sections[i].etudiants[j].firstname == foundnamesarray[chosenindex].firstname){
+                respectivesections.push(sections[i]);
+            }
+        }
+    }
+    for(var i=0;i<respectivesections.length;i++){
+        if (i==0){
+            document.getElementById("listoutput").innerHTML= foundnamesarray[chosenindex].firstname+ " is in ";
+            document.getElementById("listoutput").innerHTML+= respectivesections[i].name;
+        }
+        if(i>0){
+            if(i==(respectivesections.length-1)){
+                document.getElementById("listoutput").innerHTML+= ", and "+respectivesections[i].name
+            }else{
+                document.getElementById("listoutput").innerHTML+= ", "+respectivesections[i].name
+            }
         }
     }
 }

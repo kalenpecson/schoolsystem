@@ -11,20 +11,34 @@
 </head>
 <body>
 <div id="header">School System Program</div>
-<div id="inputs">
-    <select id="lists">
-        <option value="1">Students</option>
-        <option value="2">Teachers</option>
-        <option value="3">Sections</option>
-    </select>
-    <i class="fa fa-address-book fa-2x" id="listem" onclick= "listem()"></i>
-    <i class="fa fa-plus-square fa-2x" id="adder" onclick="setupadd()"></i>
-</div>
+<table border=”1” cellspacing=”2” cellpadding=”5”>
+    <tr>
+        <td><select id="lists">
+            <option value="1">Students</option>
+            <option value="2">Teachers</option>
+            <option value="3">Sections</option>
+        </select>
+        </td>
+        <td>    <i class="fa fa-address-book fa-2x" id="listem" onclick= "listem()"></i>
+        </td>
+        <td>    <i class="fa fa-plus-square fa-2x" id="adder" onclick="setupadd()"></i>
+        </td>
+    </tr>
+    <tr>
+        <td><button id="addstudent" onclick="addstudenttosection()">Add a student to a section</button></td>
+        <td><button id="seestudents" onclick="seestudentssection()">List students in a section</button></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><input type="text" id="lastnamesearch" placeholder="last name" size="30" margin-top="10">
+        </td>
+        <td><i class="fa fa-search fa-2x" id="finder" onclick="findperson()"></i>
+        </td>
+    </tr>
+</table>
 
-<button id="addstudent" onclick="addstudenttosection()">Add a student to a section</button>
-<button id="seestudents" onclick="seestudentssection()">List students in a section</button>
-<input type="text" id="lastnamesearch" placeholder="last name" size="30" margin-top="10">
-<i class="fa fa-search fa-2x" id="finder" onclick="findperson()"></i>
+
+
 
 <div id="listoutput"></div>
 </body>
