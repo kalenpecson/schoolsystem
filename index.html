@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Mbappe sucks</title>
     <script src="script.js"></script>
     <script src="Data.js"></script>
     <script src="actions.js"></script>
@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="header">School System Program</div>
-<table border=”1” cellspacing=”2” cellpadding=”5”>
+<table id="layouttable"  cellspacing=”4” cellpadding=”10”>
     <tr>
         <td><select id="lists">
             <option value="1">Students</option>
@@ -19,22 +19,22 @@
             <option value="3">Sections</option>
         </select>
         </td>
-        <td>    <i class="fa fa-address-book fa-2x" id="listem" onclick= "listem()"></i>
-        </td>
-        <td>    <i class="fa fa-plus-square fa-2x" id="adder" onclick="setupadd()"></i>
-        </td>
+        <td><i class="fa fa-minus-square fa-2x" id="remove" onclick="setupdelete()"></i></td>
+        <td><i class="fa fa-plus-square fa-2x" id="adder" onclick="setupadd()"></i></td>
+        <td><i class="fa fa-address-book fa-2x" id="listem" onclick= "listem()"></i></td>
+        <td><input type="text" id="idsearch" placeholder="Get Student's Sections By Id" size="30" margin-top="10"></td>
+        <td><i class="fa fa-search fa-2x" id="search" onclick="listsections()"></i></td>
     </tr>
     <tr>
-        <td><button id="addstudent" onclick="addstudenttosection()">Add a student to a section</button></td>
-        <td><button id="seestudents" onclick="seestudentssection()">List students in a section</button></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td><input type="text" id="lastnamesearch" placeholder="last name" size="30" margin-top="10">
+        <td id="Studentstosection">Student to a Section</td>
+        <td><i class="fa fa-minus-square fa-2x" id="subtract" onclick="setupaddremove(1)">
+        <td><i class="fa fa-plus-square fa-2x" id="add" onclick="setupaddremove(2)">
+        <td><i class="fa fa-address-book fa-2x" id="list" onclick= "setupaddremove(3)"></i></td>
+        <td><input type="text" id="lastnamesearch" placeholder="Get Id By Last Name" size="30" margin-top="10">
         </td>
         <td><i class="fa fa-search fa-2x" id="finder" onclick="findperson()"></i>
         </td>
-    </tr>
+
 </table>
 
 

@@ -27,7 +27,31 @@ body{
 #lists{
     background-color: black;
     color: darksalmon;
-    padding: 8px 20px;
+    padding: 10px 20px;
     border-radius: 20px;
     font-size: 20px;
+}
+
+#layouttable{
+    margin:auto;
+    width: 30%;
+    border-spacing: 15px;
+}
+
+#Studentstosection{
+    font-size:20px ;
+    color: darksalmon;
+    background-color: black;
+    border-radius: 15px;
+    text-align: center ;
+}
+tr{
+    margin-top:10px;
+}
+
+#idsearch{
+    border-radius: 15px ;
+}
+#lastnamesearch{
+    border-radius: 15px;
 }
